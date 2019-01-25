@@ -1,26 +1,32 @@
-<h1><strong><%= @cocktail.name %></strong></h1>
+<div class="container">
+  <h1><strong><%= @cocktail.name %></strong></h1>
 
-<%= cl_image_tag @cocktail.photo_url, height: 300, width: 400, crop: :fill, class: "cocktail_image" %>
+  <% if @cocktail[:photo] %>
+  <%= cl_image_tag @cocktail.photo_url, height: 300, width: 400, crop: :fill, class: "cocktail_image" %>
+  <% else  %>
+  <img src='https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' class="cocktail_image_alt">
+  <% end %>
 
-<h3>Ingredients:</h3>
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-<li><%= dose.ingredient.name %> - <%= dose.description %></li>
-<% end %>
 
-</ul>
+  <h3>Ingredients:</h3>
+  <ul>
+    <% @cocktail.doses.each do |dose| %>
+    <li><%= dose.ingredient.name %> - <%= dose.description %></li>
+    <% end %>
 
-<br>
-<br>
-<br>
+  </ul>
 
-<h6>Add a new Ingredient</h6>
-<p></p>
+  <br>
+  <br>
+  <br>
 
-<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <h6>Add a new Ingredient</h6>
+  <p></p>
+
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.input :ingredient, collection: Ingredient.all, input_html: { multiple: true, class: 'select2' }, include_hidden: false %>
   <%= f.label :dose %>
   <%= f.text_field :description %>
   <%= f.submit "Add Ingredient", class: "btn btn-primary" %>
-<% end %>
-
+  <% end %>
+</div>

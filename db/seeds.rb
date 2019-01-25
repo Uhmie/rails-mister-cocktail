@@ -17,6 +17,6 @@ items['drinks'].each do |item|
   Ingredient.create(name: item['strIngredient1'])
 end
 
-100.times do
+25.times do
   Cocktail.create(name: Faker::Coffee.blend_name)
 end
