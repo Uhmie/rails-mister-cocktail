@@ -8,21 +8,28 @@
 
 <h1 id="cocktail_list" class="text-center">All our favourite cocktails:</h1>
 <p></p>
-  <br>
-  <div class="container">
-    <div class="row">
-      <% @cocktails.each do |cocktail| %>
-      <%= link_to cocktail_path(cocktail), class: "link-card" do %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
-          <div class="card-description">
-            <h2><%= cocktail.name %></h2>
-          </div>
+<br>
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <%= link_to cocktail_path(cocktail), class: "link-card" do %>
+    <div class="col-xs-12 col-sm-4">
+      <% if cocktail[:photo] %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+        <div class="card-description">
+          <h2><%= cocktail.name %></h2>
         </div>
-
+      </div>
+      <% else  %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
+        <div class="card-description">
+          <h2><%= cocktail.name %></h2>
+        </div>
       </div>
       <% end %>
-      <% end %>
     </div>
+    <% end %>
+    <% end %>
   </div>
+</div>
 
