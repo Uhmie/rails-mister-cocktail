@@ -8,15 +8,15 @@ require 'open-uri'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-# items_serialized = open(url).read
-# items = JSON.parse(items_serialized)
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+items_serialized = open(url).read
+items = JSON.parse(items_serialized)
 
-# items['drinks'].each do |item|
-#   p item['strIngredient1']
-#   Ingredient.create(name: item['strIngredient1'])
-# end
+items['drinks'].each do |item|
+  p item['strIngredient1']
+  Ingredient.create(name: item['strIngredient1'])
+end
 
-30.times do
+100.times do
   Cocktail.create(name: Faker::Coffee.blend_name)
 end
