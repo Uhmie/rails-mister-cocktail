@@ -1,2 +1,24 @@
-<h1>Cocktails#show</h1>
-<p>Find me in app/views/cocktails/show.html.erb</p>
+<h1><strong><%= @cocktail.name %></strong></h1>
+
+<h3>Ingredients:</h3>
+<ul>
+  <% @cocktail.doses.each do |dose| %>
+<li><%= dose.ingredient.name %> - <%= dose.description %></li>
+<% end %>
+
+</ul>
+
+<br>
+<br>
+<br>
+
+<h6>Add a new Ingredient</h6>
+<p></p>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :ingredient, collection: Ingredient.all, input_html: { multiple: true, class: 'select2' }, include_hidden: false %>
+  <%= f.label :dose %>
+  <%= f.text_field :description %>
+  <%= f.submit "Add Ingredient", class: "btn btn-primary" %>
+<% end %>
+

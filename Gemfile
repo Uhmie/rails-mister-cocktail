@@ -30,8 +30,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'faker'
 gem 'font-awesome-sass', '~> 5.0.9'
+gem 'jquery-rails'
 gem 'simple_form'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -1,2 +1,24 @@
-<h1>Cocktails#index</h1>
-<p>Find me in app/views/cocktails/index.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.pexels.com/photos/605408/pexels-photo-605408.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');">
+  <div class="banner-content">
+    <h1>Uhmie's Fabulous Cocktails</h1>
+    <p>Learn to mix with us in Ingolstadt</p>
+    <%=  link_to "Create now Cocktail", new_cocktail_path, class: "btn btn-primary btn-lg"%>
+  </div>
+</div>
+
+<h1 id="cocktail_list" class="text-center">Our favourite cocktails:</h1>
+<p>
+<br>
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to cocktail.name, cocktail_path(cocktail) %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
