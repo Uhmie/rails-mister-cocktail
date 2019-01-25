@@ -1,5 +1,18 @@
 .cocktail_image_alt {
+  margin: 0px 16px;
   height: 300px;
   width: 400px;
   crop: fill;
+  border-radius: 8px;
+  box-shadow: 10px 10px 15px -3px rgba(0,0,0,0.22);
+}
+
+.cocktail_image {
+  margin: 0px 16px;
+  border-radius: 8px;
+  box-shadow: 10px 10px 15px -3px rgba(0,0,0,0.22);
+}
+
+.row-show {
+  display: flex;
 }

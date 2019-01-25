@@ -1,23 +1,23 @@
 <div class="container">
   <h1><strong><%= @cocktail.name %></strong></h1>
+  <div class="row row-show">
+    <div class="col">
+     <% if @cocktail[:photo] %>
+     <%= cl_image_tag @cocktail.photo_url, height: 300, width: 400, crop: :fill, class: "cocktail_image" %>
+     <% else  %>
+     <img src='https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' class="cocktail_image_alt">
+     <% end %>
+   </div>
+   <div class="col">
+    <h3>Ingredients:</h3>
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+      <li><%= dose.ingredient.name %> - <%= dose.description %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-  <% if @cocktail[:photo] %>
-  <%= cl_image_tag @cocktail.photo_url, height: 300, width: 400, crop: :fill, class: "cocktail_image" %>
-  <% else  %>
-  <img src='https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' class="cocktail_image_alt">
-  <% end %>
-
-
-  <h3>Ingredients:</h3>
-  <ul>
-    <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.ingredient.name %> - <%= dose.description %></li>
-    <% end %>
-
-  </ul>
-
-  <br>
-  <br>
   <br>
 
   <h6>Add a new Ingredient</h6>
